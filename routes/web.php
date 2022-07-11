@@ -84,7 +84,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
 
-    
+    Route::get('/sip/add', [SipController::class, 'create'])->name('sip.add');
+
+
+
+
     // Route::get('sip', function () {
     //     $sip = new Sip;
     

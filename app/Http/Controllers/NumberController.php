@@ -32,6 +32,9 @@ class NumberController extends Controller
      */
     public function index()
     {
+        return view('number.index', ['numbers' => Number::all()]);
+
+        
         $config = (new Config())
             ->setKey('AKIAICUIKDENRY44ZFQQ')
             ->setSecret('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')
@@ -88,12 +91,6 @@ class NumberController extends Controller
         $resp = $textToSpeechClient->synthesizeSpeech($input, $voice, $audioConfig);
         file_put_contents($name.'.mp3', $resp->getAudioContent());
         die();
-     
-     
-     
-     
-     
-        return view('number.index', ['numbers' => Number::all()]);
     }
 
     /**

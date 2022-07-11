@@ -246,7 +246,7 @@
 									</a>
 
 									<div class="dropdown-menu dropdown-menu-right">
-										<a href="{{ route('users.show', Auth::user()->id) }}" class="dropdown-item"><i class="icon-user-lock"></i> Ustawienia konta</a>
+										{{-- <a href="{{ route('users.show', Auth::user()->id) }}" class="dropdown-item"><i class="icon-user-lock"></i> Ustawienia konta</a> --}}
 
 										<div class="dropdown-divider"></div>
 										{{-- <a href="/" class="dropdown-item"><i class="icon-gear"></i> All settings</a> --}}
