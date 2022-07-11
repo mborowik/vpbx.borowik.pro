@@ -6,8 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ahmadmayahi/php-amazon-polly": "^1.1",
         "diglactic/laravel-breadcrumbs": "^7.0",
         "fruitcake/laravel-cors": "^2.0",
+        "google/cloud-storage": "^1.27",
+        "google/cloud-text-to-speech": "^1.4",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/fortify": "^1.8",
         "laravel/framework": "^8.54",

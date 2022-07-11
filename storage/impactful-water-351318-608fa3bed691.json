@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "impactful-water-351318",
+  "private_key_id": "608fa3bed691f6739d39ef936206e78486d1163d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTiU11Rz3IWeHX\nSWsaZKzjb5AEn1czwpFbLfIwPXW2XnRtD3Kx3lsogI8Bd3CCjDAvSVaFfQmomvd1\neZLmIuUK0L+SI7g1yf1U0Gsr17yQlUIasgv/jZJjYLWxYocodrsg6jveJ6jZAbl7\nKcMPoodltI7RKixLzDbNbVMzoj5JiBCIFucyQKTUdI0laFNqTle6rpoz/frjH3KH\nYz/9yZRiR2+DEB4+R5SVlOJ5WCab5YYxCBEv17BZP+R9HvoTXRH/UD/GK6hs0iQ8\n78BKuf6Ii4hfSPLMpbUNxLo+nqUAKOOq6JYxtCd1LeqyPW9iJzn5LABf2LcTPNhk\n1FMDn0wHAgMBAAECggEABMSdMjsZLg5plBGVWocCZ19FokCcCtow5Gd5ukFiOoCW\n9qdXJ5RuEcMF3CBGDJIHRJ/0IeBGnaJUeQFy0+kwycaxSkHJREPA4irSK9qPB4Ur\nW72BUcL7hiar+I2cnJwptAid4rIZbNn3apmQ6kJwacMKEoxwXgq9gqoT1ElcBfhJ\nL0fxxS8IRRRBRFf3AGRftGMHTIX754Owf5AnCrCtuWvIvvKjsYeoKgfaVRt5w6N/\n5OOPRz0f0M5KLPeOkBbwV2RNaG4B83zIzmZ/9mIiSeoraGbeOXxo4H2zSIizy0zv\nXN84LhOgEQyQrqwgP1M5q4sxie56DlnQOWkWgfvAIQKBgQDIO0ZyPgv19PXgUUky\nhErjxWanBtqFsiJONqpaWZkdzjZbci3MKgx3+iassS7afIzaAo02eGLuxMpBrkz+\nS8V5doYOeut8TIi/pbnpabqi/9Hgj6xDazpYf5CEnPaKFE0CrxXrSl4lhzmdZAkY\nhblp9m/kun+YzHlRDKqpdKYW7wKBgQC8oM1tzqO05yrAGGJpIoX6wXXrAuvOc//M\np6tJYIlfXAsDx/QhtggkYWlU2Zbw2kxmg6M0TgKHVGLnTzcWK/k0qCNMCc96BtC6\n/U6xyUuqVanIYGEkVrTOThLggvUuBKtzf/uixQhkehXvmn7szf0K5tSiZkC0S51D\nwG9K6N5caQKBgFxAAvrLX1NYIpfQm3qsvJwn7F1zqOYD5g5G3UF3GjZDNYP4HOV9\nUfVMyNizYTTEQViH6Gt6F4qOG+ka1toqKrcFRkoRk8DWugIh5n+FeLl0R0vApcsB\n8gWn7/tJHcUMCVb9N4oJ30pG/OJonlAv+/a31WF6EyNgwVv4DAC6f3L9AoGAH+kY\nN75ghYch/VNiuqSDg/NcjoB1Af0vxiCLYqN5Oe+pUV9vVpCj+fucxST2WxKjICie\n4Idd+CT3gmgtSovv4c+cAQ4b0mn6v9eAi6UhLtTFH0fmxy3/8nLU0LR24+0YUDbT\njCrHC7B3q4w4crk6WLDKQhsIUTgFh+OzMDoK/BkCgYEAlK8LyQrs1j3h+H4lvokN\nIE3JmFljaF6Jop95t6SxW/T6haDcH0TvhfjkSbCoZv+P7pwxWC6w3TpOkPOZyKY9\nAYwfh0VWqmPHbaBXepHBrJDbaHwttzoQiOOcWnpLP3TG9wqBQtP8bl12HixBHI4S\nV5ysgdLvxZOmKrjwBCo57nI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "marcin@impactful-water-351318.iam.gserviceaccount.com",
+  "client_id": "107686810287940673915",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/marcin%40impactful-water-351318.iam.gserviceaccount.com"
+}
