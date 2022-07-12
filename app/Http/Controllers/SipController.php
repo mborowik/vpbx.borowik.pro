@@ -39,48 +39,48 @@ class SipController extends Controller
      */
     public function store(Request $request)
     {
-        $conf  = ""   . " \n\t";
-        $conf .= "[204]"   . " \n\t";
-        $conf .= "type = auth"   . " \n\t";
-        $conf .= "username = 204"   . " \n\t";
+        $conf  = ""   . PHP_EOL."\t";
+        $conf .= "[204]"   . PHP_EOL."\t";
+        $conf .= "type = auth"   . PHP_EOL."\t";
+        $conf .= "username = 204"   . PHP_EOL."\t";
         $conf .= "password = $request->secret"   . " \n\n";
         
-        $conf .= "[204]"   . " \n\t";
-        $conf .= "type = aor"   . " \n\t";
-        $conf .= "qualify_frequency = 60"   . " \n\t";
-        $conf .= "qualify_timeout = 5"   . " \n\t";
+        $conf .= "[204]"   . PHP_EOL."\t";
+        $conf .= "type = aor"   . PHP_EOL."\t";
+        $conf .= "qualify_frequency = 60"   . PHP_EOL."\t";
+        $conf .= "qualify_timeout = 5"   . PHP_EOL."\t";
         $conf .= "max_contacts = 5"   . " \n\n";
         
-        $conf .= "[204]"   . " \n\t";
-        $conf .= "type = endpoint"   . " \n\t";
-        $conf .= "context = all_peers"   . " \n\t";
-        $conf .= "dtmf_mode = auto"   . " \n\t";
-        $conf .= "disallow = all"   . " \n\t";
-        $conf .= "allow = alaw"   . " \n\t";
-        $conf .= "allow = ulaw"   . " \n\t";
-        $conf .= "allow = ilbc"   . " \n\t";
-        $conf .= "allow = opus"   . " \n\t";
-        $conf .= "allow = h264"   . " \n\t";
-        $conf .= "rtp_symmetric = yes"   . " \n\t";
-        $conf .= "force_rport = yes"   . " \n\t";
-        $conf .= "rewrite_contact = yes"   . " \n\t";
-        $conf .= "ice_support = no"   . " \n\t";
-        $conf .= "direct_media = no"   . " \n\t";
-        $conf .= "callerid = Marcin <204>"   . " \n\t";
-        $conf .= "send_pai = yes"   . " \n\t";
-        $conf .= "call_group = 1"   . " \n\t";
-        $conf .= "pickup_group = 1"   . " \n\t";
-        $conf .= "sdp_session = mikopbx"   . " \n\t";
-        $conf .= "language = pl-pl"   . " \n\t";
-        $conf .= "mailboxes = admin@voicemailcontext"   . " \n\t";
-        $conf .= "device_state_busy_at = 1"   . " \n\t";
-        $conf .= "aors = 204"   . " \n\t";
-        $conf .= "auth = 204"   . " \n\t";
-        $conf .= "outbound_auth = 204"   . " \n\t";
-        $conf .= "acl = acl_204"   . " \n\t";
-        $conf .= "timers = no"   . " \n\t";
-        $conf .= "message_context = messages"   . " \n\t";
-        $conf .= "inband_progress = yes"   . " \n\t";
+        $conf .= "[204]"   . PHP_EOL."\t";
+        $conf .= "type = endpoint"   . PHP_EOL."\t";
+        $conf .= "context = all_peers"   . PHP_EOL."\t";
+        $conf .= "dtmf_mode = auto"   . PHP_EOL."\t";
+        $conf .= "disallow = all"   . PHP_EOL."\t";
+        $conf .= "allow = alaw"   . PHP_EOL."\t";
+        $conf .= "allow = ulaw"   . PHP_EOL."\t";
+        $conf .= "allow = ilbc"   . PHP_EOL."\t";
+        $conf .= "allow = opus"   . PHP_EOL."\t";
+        $conf .= "allow = h264"   . PHP_EOL."\t";
+        $conf .= "rtp_symmetric = yes"   . PHP_EOL."\t";
+        $conf .= "force_rport = yes"   . PHP_EOL."\t";
+        $conf .= "rewrite_contact = yes"   . PHP_EOL."\t";
+        $conf .= "ice_support = no"   . PHP_EOL."\t";
+        $conf .= "direct_media = no"   . PHP_EOL."\t";
+        $conf .= "callerid = Marcin <204>"   . PHP_EOL."\t";
+        $conf .= "send_pai = yes"   . PHP_EOL."\t";
+        $conf .= "call_group = 1"   . PHP_EOL."\t";
+        $conf .= "pickup_group = 1"   . PHP_EOL."\t";
+        $conf .= "sdp_session = mikopbx"   . PHP_EOL."\t";
+        $conf .= "language = pl-pl"   . PHP_EOL."\t";
+        $conf .= "mailboxes = admin@voicemailcontext"   . PHP_EOL."\t";
+        $conf .= "device_state_busy_at = 1"   . PHP_EOL."\t";
+        $conf .= "aors = 204"   . PHP_EOL."\t";
+        $conf .= "auth = 204"   . PHP_EOL."\t";
+        $conf .= "outbound_auth = 204"   . PHP_EOL."\t";
+        $conf .= "acl = acl_204"   . PHP_EOL."\t";
+        $conf .= "timers = no"   . PHP_EOL."\t";
+        $conf .= "message_context = messages"   . PHP_EOL."\t";
+        $conf .= "inband_progress = yes"   . PHP_EOL."\t";
         $conf .= "tone_zone = pl"   . " \n\n";
 
 
