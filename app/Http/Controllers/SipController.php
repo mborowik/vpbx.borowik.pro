@@ -107,7 +107,7 @@ class SipController extends Controller
 
     public function reload()
     {
-        $process = new Process(['asterisk','-rx','sip reload']);
+        $process = new Process(['asterisk','-rx','pjsip reload']);
         $process->run();
         $process = new Process(['asterisk','-rx','dialplan reload']);
         $process->run();
