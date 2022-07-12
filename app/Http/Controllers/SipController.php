@@ -43,13 +43,13 @@ class SipController extends Controller
         $conf .= "[204]"   . " \n\t";
         $conf .= "type = auth"   . " \n\t";
         $conf .= "username = 204"   . " \n\t";
-        $conf .= "password = $request->secret"   . " \n\t";
+        $conf .= "password = $request->secret"   . " \n\n";
         
         $conf .= "[204]"   . " \n\t";
         $conf .= "type = aor"   . " \n\t";
         $conf .= "qualify_frequency = 60"   . " \n\t";
         $conf .= "qualify_timeout = 5"   . " \n\t";
-        $conf .= "max_contacts = 5"   . " \n\t";
+        $conf .= "max_contacts = 5"   . " \n\n";
         
         $conf .= "[204]"   . " \n\t";
         $conf .= "type = endpoint"   . " \n\t";
