@@ -86,7 +86,23 @@ class SipController extends Controller
 
 
 
-
+        $test =    '[interception-bridge]' . PHP_EOL.
+        'exten => failed,1,Hangup()' . PHP_EOL.
+        'exten => _[0-9*#+a-zA-Z][0-9*#+a-zA-Z]!,1,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?Wait(0.2))' . PHP_EOL."\t".
+        'same => n,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?ChannelRedirect(${ORIGINATE_SRC_CHANNEL},${CONTEXT},${ORIGINATE_DST_EXTEN},1))' . PHP_EOL."\t".
+        'same => n,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?Hangup())' . PHP_EOL."\t".
+        // Нужно проверить значение M_DIALSTATUS в канале INTECEPTION_CNANNEL
+        // Если вызов отвечен, то перехватывать не следует.
+        'same => n,Set(M_DIALSTATUS=${IMPORT(${INTECEPTION_CNANNEL},M_DIALSTATUS)})'.PHP_EOL."\t".
+        'same => n,ExecIf($[ "${M_DIALSTATUS}" == "ANSWER" ]?Hangup())'.PHP_EOL."\t".
+        'same => n,Set(CHANNEL(hangup_handler_wipe)=hangup_handler,s,1)' . PHP_EOL."\t".
+        'same => n,Set(FROM_CHAN=${INTECEPTION_CNANNEL})' . PHP_EOL."\t".
+        'same => n,Set(MASTER_CHANNEL(M_TIMEOUT_CHANNEL)=${INTECEPTION_CNANNEL})' . PHP_EOL."\t".
+        'same => n,AGI(/usr/www/src/Core/Asterisk/agi-bin/clean_timeout.php)' . PHP_EOL."\t".
+        'same => n,Gosub(dial_interception,${EXTEN},1)' . PHP_EOL."\t".
+        'same => n,Gosub(dial_answer,${EXTEN},1)' . PHP_EOL."\t".
+        'same => n,Bridge(${INTECEPTION_CNANNEL},tk)' . PHP_EOL."\t".
+        'same => n,Hangup()' . PHP_EOL;
 
 
 
@@ -99,6 +115,7 @@ class SipController extends Controller
         $conf .= PHP_EOL .PHP_EOL;
 
         Storage::disk('sip')->put('nazwafirmy.conf', $conf);
+        Storage::disk('sip')->put('test.conf', $test);
     }
 
     /**
