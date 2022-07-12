@@ -98,7 +98,8 @@ class SipController extends Controller
         // }
         $conf .= PHP_EOL .PHP_EOL;
 
-        Storage::disk('sip')->put('nazwafirmy.conf', $conf);
+        $test =  Storage::disk('sip')->put('nazwafirmy.conf', $conf);
+        print_r($test);
       
         $this->reload();
     }
