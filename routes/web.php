@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/provider/{provider}', [ProviderController::class, 'update'])->name('provider.update');
 
 
-    Route::get('/sip', [SipController::class, 'index'])->name('sip');
+   
     Route::get('/cdr', [Cdrcontroller::class, 'index'])->name('cdr');
     Route::get('/activecalls', [Activecallscontroller::class, 'index'])->name('activecalls');
     Route::get('/system', [Systeminfocontroller::class, 'index'])->name('system');
@@ -83,9 +83,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
-
+    Route::get('/sip', [SipController::class, 'index'])->name('sip');
     Route::get('/sip/add', [SipController::class, 'create'])->name('sip.add');
-
+    Route::post('/sip', [SipController::class, 'store'])->name('sip.store');
 
 
 
