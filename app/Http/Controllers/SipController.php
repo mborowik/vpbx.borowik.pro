@@ -39,19 +39,19 @@ class SipController extends Controller
      */
     public function store(Request $request)
     {
-        $conf  = ""   . PHP_EOL."\t";
-        $conf .= "[204]"   . PHP_EOL."\t";
+        // $conf  = ""   . PHP_EOL."\t";
+        $conf = "[$request->description]"   . PHP_EOL."\t";
         $conf .= "type = auth"   . PHP_EOL."\t";
-        $conf .= "username = 204"   . PHP_EOL."\t";
+        $conf .= "username = $request->description"   . PHP_EOL."\t";
         $conf .= "password = $request->secret"   . " \n\n";
         
-        $conf .= "[204]"   . PHP_EOL."\t";
+        $conf .= "[$request->description]"   . PHP_EOL."\t";
         $conf .= "type = aor"   . PHP_EOL."\t";
         $conf .= "qualify_frequency = 60"   . PHP_EOL."\t";
         $conf .= "qualify_timeout = 5"   . PHP_EOL."\t";
         $conf .= "max_contacts = 5"   . " \n\n";
         
-        $conf .= "[204]"   . PHP_EOL."\t";
+        $conf .= "[$request->description]"   . PHP_EOL."\t";
         $conf .= "type = endpoint"   . PHP_EOL."\t";
         $conf .= "context = all_peers"   . PHP_EOL."\t";
         $conf .= "dtmf_mode = auto"   . PHP_EOL."\t";
@@ -66,7 +66,7 @@ class SipController extends Controller
         $conf .= "rewrite_contact = yes"   . PHP_EOL."\t";
         $conf .= "ice_support = no"   . PHP_EOL."\t";
         $conf .= "direct_media = no"   . PHP_EOL."\t";
-        $conf .= "callerid = Marcin <204>"   . PHP_EOL."\t";
+        $conf .= "callerid = Marcin <$request->description>"   . PHP_EOL."\t";
         $conf .= "send_pai = yes"   . PHP_EOL."\t";
         $conf .= "call_group = 1"   . PHP_EOL."\t";
         $conf .= "pickup_group = 1"   . PHP_EOL."\t";
@@ -74,9 +74,9 @@ class SipController extends Controller
         $conf .= "language = pl-pl"   . PHP_EOL."\t";
         $conf .= "mailboxes = admin@voicemailcontext"   . PHP_EOL."\t";
         $conf .= "device_state_busy_at = 1"   . PHP_EOL."\t";
-        $conf .= "aors = 204"   . PHP_EOL."\t";
-        $conf .= "auth = 204"   . PHP_EOL."\t";
-        $conf .= "outbound_auth = 204"   . PHP_EOL."\t";
+        $conf .= "aors = $request->description"   . PHP_EOL."\t";
+        $conf .= "auth = $request->description"   . PHP_EOL."\t";
+        $conf .= "outbound_auth = $request->description"   . PHP_EOL."\t";
         $conf .= "acl = acl_204"   . PHP_EOL."\t";
         $conf .= "timers = no"   . PHP_EOL."\t";
         $conf .= "message_context = messages"   . PHP_EOL."\t";
@@ -84,25 +84,8 @@ class SipController extends Controller
         $conf .= "tone_zone = pl"   . " \n\n";
 
 
+   
 
-
-        $test =    '[interception-bridge]' . PHP_EOL.
-        'exten => failed,1,Hangup()' . PHP_EOL.
-        'exten => _[0-9*#+a-zA-Z][0-9*#+a-zA-Z]!,1,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?Wait(0.2))' . PHP_EOL."\t".
-        'same => n,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?ChannelRedirect(${ORIGINATE_SRC_CHANNEL},${CONTEXT},${ORIGINATE_DST_EXTEN},1))' . PHP_EOL."\t".
-        'same => n,ExecIf($[ "${ORIGINATE_SRC_CHANNEL}x" != "x" ]?Hangup())' . PHP_EOL."\t".
-        // Нужно проверить значение M_DIALSTATUS в канале INTECEPTION_CNANNEL
-        // Если вызов отвечен, то перехватывать не следует.
-        'same => n,Set(M_DIALSTATUS=${IMPORT(${INTECEPTION_CNANNEL},M_DIALSTATUS)})'.PHP_EOL."\t".
-        'same => n,ExecIf($[ "${M_DIALSTATUS}" == "ANSWER" ]?Hangup())'.PHP_EOL."\t".
-        'same => n,Set(CHANNEL(hangup_handler_wipe)=hangup_handler,s,1)' . PHP_EOL."\t".
-        'same => n,Set(FROM_CHAN=${INTECEPTION_CNANNEL})' . PHP_EOL."\t".
-        'same => n,Set(MASTER_CHANNEL(M_TIMEOUT_CHANNEL)=${INTECEPTION_CNANNEL})' . PHP_EOL."\t".
-        'same => n,AGI(/usr/www/src/Core/Asterisk/agi-bin/clean_timeout.php)' . PHP_EOL."\t".
-        'same => n,Gosub(dial_interception,${EXTEN},1)' . PHP_EOL."\t".
-        'same => n,Gosub(dial_answer,${EXTEN},1)' . PHP_EOL."\t".
-        'same => n,Bridge(${INTECEPTION_CNANNEL},tk)' . PHP_EOL."\t".
-        'same => n,Hangup()' . PHP_EOL;
 
 
 
@@ -115,9 +98,20 @@ class SipController extends Controller
         $conf .= PHP_EOL .PHP_EOL;
 
         Storage::disk('sip')->put('nazwafirmy.conf', $conf);
-        Storage::disk('sip')->put('test.conf', $test);
+      
+        $this->reload();
     }
 
+
+    public function reload()
+    {
+        $process = new Process(['asterisk','-rx','sip reload']);
+        $process->run();
+        $process = new Process(['asterisk','-rx','dialplan reload']);
+        $process->run();
+    }
+
+    
     /**
      * Display the specified resource.
      *
