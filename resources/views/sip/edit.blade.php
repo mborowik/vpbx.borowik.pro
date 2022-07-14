@@ -36,7 +36,7 @@
 
                                 <x-forms.input type="context" label="Kontekst" placeholder="Kontekst" value="{{ old('context',$sip->context) }}"/>
 
-                                <x-forms.input type="callerid" label="callerid" value=""/>
+                                <x-forms.input type="callerid" label="callerid" value="{{ old('callerid',$sip->callerid) }}/>
 
                                 {{-- <x-forms.input type="description" label="Opis" placeholder="Opis"/>	 --}}
 
