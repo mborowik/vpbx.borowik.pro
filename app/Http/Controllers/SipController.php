@@ -170,7 +170,7 @@ class SipController extends Controller
          $conf .= "rewrite_contact = yes"   . PHP_EOL."\t";
          $conf .= "ice_support = no"   . PHP_EOL."\t";
          $conf .= "direct_media = no"   . PHP_EOL."\t";
-         $conf .= "callerid = Marcin <$sip->username>"   . PHP_EOL."\t";
+         $conf .= "callerid = $sip->callerid"   . PHP_EOL."\t";
          $conf .= "send_pai = yes"   . PHP_EOL."\t";
          $conf .= "call_group = $sip->call_group"   . PHP_EOL."\t";
          $conf .= "pickup_group = $sip->pickup_group"   . PHP_EOL."\t";
