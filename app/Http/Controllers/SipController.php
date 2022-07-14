@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Psauths;
 use App\Models\Sip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,21 +41,35 @@ class SipController extends Controller
      */
     public function store(Request $request)
     {
-        // $conf  = ""   . PHP_EOL."\t";
-        $conf = "[$request->description]"   . PHP_EOL."\t";
-        $conf .= "type = auth"   . PHP_EOL."\t";
-        $conf .= "username = $request->description"   . PHP_EOL."\t";
-        $conf .= "password = $request->secret"   . " \n\n";
+
+
+
+
         
-        $conf .= "[$request->description]"   . PHP_EOL."\t";
+        Sip::create($request->input());
+     
+
+         $sips =  Sip::all();
+         $conf  = ""   . PHP_EOL."\t";
+
+       foreach ($sips as $key => $sip) {
+    
+
+        
+        $conf .= "[$sip->username]"   . PHP_EOL."\t";
+        $conf .= "type = auth"   . PHP_EOL."\t";
+        $conf .= "username = $sip->username"   . PHP_EOL."\t";
+        $conf .= "password = $sip->secret"   . " \n\n";
+        
+        $conf .= "[$sip->username]"   . PHP_EOL."\t";
         $conf .= "type = aor"   . PHP_EOL."\t";
         $conf .= "qualify_frequency = 60"   . PHP_EOL."\t";
         $conf .= "qualify_timeout = 5"   . PHP_EOL."\t";
-        $conf .= "max_contacts = 5"   . " \n\n";
+        $conf .= "max_contacts = $sip->contacts"   . " \n\n";
         
-        $conf .= "[$request->description]"   . PHP_EOL."\t";
+        $conf .= "[$sip->username]"   . PHP_EOL."\t";
         $conf .= "type = endpoint"   . PHP_EOL."\t";
-        $conf .= "context = all_peers"   . PHP_EOL."\t";
+        $conf .= "context = $sip->context"   . PHP_EOL."\t";
         $conf .= "dtmf_mode = auto"   . PHP_EOL."\t";
         $conf .= "disallow = all"   . PHP_EOL."\t";
         $conf .= "allow = alaw"   . PHP_EOL."\t";
@@ -67,17 +82,17 @@ class SipController extends Controller
         $conf .= "rewrite_contact = yes"   . PHP_EOL."\t";
         $conf .= "ice_support = no"   . PHP_EOL."\t";
         $conf .= "direct_media = no"   . PHP_EOL."\t";
-        $conf .= "callerid = Marcin <$request->description>"   . PHP_EOL."\t";
+        $conf .= "callerid = Marcin <$sip->username>"   . PHP_EOL."\t";
         $conf .= "send_pai = yes"   . PHP_EOL."\t";
-        $conf .= "call_group = 1"   . PHP_EOL."\t";
-        $conf .= "pickup_group = 1"   . PHP_EOL."\t";
-        $conf .= "sdp_session = mikopbx"   . PHP_EOL."\t";
+        $conf .= "call_group = $sip->call_group"   . PHP_EOL."\t";
+        $conf .= "pickup_group = $sip->pickup_group"   . PHP_EOL."\t";
+        $conf .= "sdp_session = borowikpro"   . PHP_EOL."\t";
         $conf .= "language = pl-pl"   . PHP_EOL."\t";
         $conf .= "mailboxes = admin@voicemailcontext"   . PHP_EOL."\t";
         $conf .= "device_state_busy_at = 1"   . PHP_EOL."\t";
-        $conf .= "aors = $request->description"   . PHP_EOL."\t";
-        $conf .= "auth = $request->description"   . PHP_EOL."\t";
-        $conf .= "outbound_auth = $request->description"   . PHP_EOL."\t";
+        $conf .= "aors = $sip->username"   . PHP_EOL."\t";
+        $conf .= "auth = $sip->username"   . PHP_EOL."\t";
+        $conf .= "outbound_auth = $sip->username"   . PHP_EOL."\t";
         $conf .= "acl = acl_204"   . PHP_EOL."\t";
         $conf .= "timers = no"   . PHP_EOL."\t";
         $conf .= "message_context = messages"   . PHP_EOL."\t";
@@ -85,20 +100,15 @@ class SipController extends Controller
         $conf .= "tone_zone = pl"   . " \n\n";
 
 
-   
 
-
-
-
-
-        // foreach ($sip as $key => $value) {
-        //     if ($value != null && $key != 'id') {
-        //         $conf .= $key.' = '.$value . PHP_EOL ."\t";
-        //     }
-        // }
         $conf .= PHP_EOL .PHP_EOL;
 
-        $test =  Storage::disk('sip')->put('nazwafirmy.conf', $conf);
+
+       }
+
+       
+
+        $test =  Storage::disk('sip')->put($request->context.'.conf', $conf);
         print_r($test);
       
         $this->reload();

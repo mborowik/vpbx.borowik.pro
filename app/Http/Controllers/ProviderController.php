@@ -37,6 +37,7 @@ class ProviderController extends Controller
 
         foreach ($providers as $key => $provider) {
             $sip[$provider->sipuid] = $this->sippeers($provider->sipuid);
+          
         }
 
      
@@ -287,7 +288,7 @@ class ProviderController extends Controller
 
 
 
-        $conf .= "[204]"   . " \n\t";
+        $conf .= "[204]"   . " \n\t"; 
         $conf .= "type = auth"   . " \n\t";
         $conf .= "username = 204"   . " \n\t";
         $conf .= "password = 02d57103b46ae0c0a5e4c403c2cf0c15"   . " \n\t";
@@ -298,7 +299,7 @@ class ProviderController extends Controller
         $conf .= "qualify_timeout = 5"   . " \n\t";
         $conf .= "max_contacts = 5"   . " \n\t";
         
-        $conf .= "[204]"   . " \n\t";
+        $conf .= "[204]"   . " \n\t"; 
         $conf .= "type = endpoint"   . " \n\t";
         $conf .= "context = all_peers"   . " \n\t";
         $conf .= "dtmf_mode = auto"   . " \n\t";
@@ -328,7 +329,7 @@ class ProviderController extends Controller
         $conf .= "timers = no"   . " \n\t";
         $conf .= "message_context = messages"   . " \n\t";
         $conf .= "inband_progress = yes"   . " \n\t";
-        $conf .= "tone_zone = pl"   . " \n\n";
+        $conf .= "tone_zone = pl"   . " \n\t";
 
 
 
@@ -388,7 +389,7 @@ class ProviderController extends Controller
     
         $conf .= 'same => n,GoSub(sprawdz_trase,48${EXTEN},1) ' . " \n\t";
         $conf .= 'same => n,GoTo(dialOUT,48${EXTEN},1)' . " \n\t";
-        $conf .= 'same => n,Hangup() ' . " \n\n";
+        $conf .= 'same => n,Hangup() ' . " \n\n";        
  
         
         $conf .= 'exten => _0X.,1,NoOp(Z NUMERU: ${CALLERID(num)}  ${CALLERID(name)} NA NUMER: ${EXTEN}  CONTEXT ${CONTEXT} )' . " \n\t";

@@ -25,7 +25,18 @@
                         <div class="row">
                             <div class="col-lg-12">
 
-                                <x-forms.input type="description" label="Opis" placeholder="Opis"/>	
+
+                                <x-forms.input type="username" label="Name" placeholder="Name" value="SIP-{{$uniqid}}" readonly="readonly"/> 
+                                <x-forms.input type="secret" label="Secret"  value="{{ old('secret',Str::random(16)) }}" />  
+                                <x-forms.input type="contacts" label="Liczba kontaktów" value="1"/>
+                                <x-forms.input type="call_group" label="call_group" value="1"/>
+                                <x-forms.input type="pickup_group" label="pickup_group" value="1"/>
+
+                                <x-forms.input type="context" label="Kontekst" placeholder="Kontekst" value=""/>
+
+                                <x-forms.input type="callerid" label="callerid" value=""/>
+
+                                {{-- <x-forms.input type="description" label="Opis" placeholder="Opis"/>	 --}}
 
                                     {{-- <div class="form-group row">
                                         <label class="col-form-label col-lg-3">Opis:</label>
@@ -38,7 +49,7 @@
 
                                     
                                   
-                                    <legend class="font-weight-semibold">Format numeru dla połączeń przychodzących</legend>
+                                    {{-- <legend class="font-weight-semibold">Format numeru dla połączeń przychodzących</legend>
 
 
                                     <x-forms.select type="incomingA" label="Numer A(Caller ID)"  :options="$options" selected="{{old('incomingA')}}"/> 
@@ -52,30 +63,18 @@
                                     <x-forms.select type="outgoingB" label="Numer B(Destination Number)"  :options="$options" selected="{{old('outgoingB')}}"/>
 
                                   
-                                    <x-forms.input type="name" label="Name" placeholder="Name" value="SIP-{{$uniqid}}" readonly="readonly"/> 
+                                    <x-forms.input type="name" label="Name" placeholder="Name" value="SIP-{{$uniqid}}" readonly="readonly"/>  --}}
 
-                                       
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-3">Wymaga rejestracji:</label>
-                                        <div class="col-lg-8">
-                                        {{-- <input type="text" class="form-control form-control-sm" placeholder="" name="type"> --}}
 
-                                        <select class="custom-select" placeholder="" name="regserver" value="{{ old('regserver') }}">
-                                            <option value="tak" selected>Tak</option>                                                  
-                                            <option value="nie">Nie</option>             
-                                        </select>
-
-                                        </div>
-                                    </div>    {{-- enum('friend','user','peer') DEFAULT NULL, --}}        
                                             
 
                                     {{-- <x-forms.input type="defaultuser" label="Defaultuser"/>  --}}
 
-                                    <x-forms.input type="fromdomain" label="Nazwa Hosta"/>  
+                                    {{-- <x-forms.input type="fromdomain" label="Nazwa Hosta"/>  
 
                                     <x-forms.input type="port" label="Port"/> 
-                                            
-                                
+                                             --}}
+{{--                                 
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-3">type:</label>
@@ -89,18 +88,18 @@
                                         </select>
 
                                         </div>
-                                    </div>    
+                                    </div>     --}}
 
                                     
                                     
-
+{{-- 
                                     <x-forms.input type="permit" label="Permit"/> 
 
 
-                                    <x-forms.input type="deny" label="Deny"  value="0.0.0.0/0.0.0.0" />       
+                                    <x-forms.input type="deny" label="Deny"  value="0.0.0.0/0.0.0.0" />        --}}
 
 
-                                    <x-forms.input type="secret" label="Secret"  value="{{ old('secret',Str::random(16)) }}" />       
+                                        
 
 
 
@@ -124,7 +123,7 @@
 
                                             
 
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label class="col-form-label col-lg-3">nat:</label>
                                         <div class="col-lg-8">
                                     
@@ -138,7 +137,7 @@
 
                                         </div>
                                     </div> 
-                                            
+                                             --}}
 
                                             
                                     {{-- <x-forms.input type="accountcode" label="Accountcode"/>  --}}
@@ -158,17 +157,17 @@
                                             
                                     {{-- <x-forms.input type="qualify" label="Qualify"/>  --}}
 
-                                    <x-forms.input type="call-limit" label="Limit połączeń" value="10"/>
+                                    
 
 
                                                         
 
 
                                         
-
+{{-- 
                                 <legend class="font-weight-semibold">Obszar Alarmowy</legend>
 
-                                <livewire:search-terc :provider=null>
+                                <livewire:search-terc :provider=null> --}}
 
 
 

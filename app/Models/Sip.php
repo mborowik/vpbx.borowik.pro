@@ -19,6 +19,21 @@ class Sip extends Model
     'kna' =>'Krajowy (9 cyfr)'];
     
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($model){
+
+            $model->user_id = auth()->id();
+            $model->firm_id = 1;
+        });
+    }
+
+
+
+
+
     public function provider()
     {
         return $this->belongsTo(Provider::class, 'uniqid', 'uniqid');

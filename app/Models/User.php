@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Firm;
 use App\Models\Extension;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -49,4 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Extension::class);
     }
+
+    public function firm()
+    {
+        return $this->hasMany(Firm::class);
+    }
+
 }
