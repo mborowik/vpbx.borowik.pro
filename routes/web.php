@@ -86,9 +86,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sip', [SipController::class, 'index'])->name('sip');
     Route::get('/sip/add', [SipController::class, 'create'])->name('sip.add');
     Route::post('/sip', [SipController::class, 'store'])->name('sip.store');
+    Route::delete('/sip/{sip}', [SipController::class, 'destroy'])->name('sip.delete');
+    Route::get('/sip/{sip}/edit', [SipController::class, 'edit'])->name('sip.edit');
 
-
-
+    Route::patch('/sip/{sip}', [SipController::class, 'update'])->name('sip.update');
     // Route::get('sip', function () {
     //     $sip = new Sip;
     
